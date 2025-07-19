@@ -1,6 +1,8 @@
 # Equity Monitor ARG
 
 Este proyecto en Python permite monitorear semanalmente el estado de valuación de las principales acciones argentinas listadas en el exterior, utilizando datos financieros extraídos con `yfinance`.
+![Título del gráfico](images/monitor.png)
+
 
 ## Objetivo
 
