@@ -44,6 +44,30 @@ symbols = [
     'BPAT.BA',   # Banco Patagonia
 ]
 
+def explain_score(row):
+    """Provides a text breakdown of why a stock got its score."""
+    explanation = []
+    pe = row.get('P/E')
+    ev_ebitda = row.get('EV/EBITDA')
+    roe = row.get('ROE (%)')
+    margin = row.get('Margin (%)')
+    sma = row.get('Price vs SMA200 (%)')
+    rsi = row.get('RSI')
+
+    # Value
+    if pe and isinstance(pe, (int, float)) and 0 < pe < 10: explanation.append("P/E atractivo (<10)")
+    if ev_ebitda and isinstance(ev_ebitda, (int, float)) and 0 < ev_ebitda < 8: explanation.append("EV/EBITDA bajo (<8)")
+
+    # Quality
+    if roe and isinstance(roe, (int, float)) and roe > 20: explanation.append("ROE alto (>20%)")
+    if margin and isinstance(margin, (int, float)) and margin > 15: explanation.append("Margen sólido (>15%)")
+
+    # Momentum
+    if sma and isinstance(sma, (int, float)) and sma > 0: explanation.append("Tendencia alcista (Sobre SMA200)")
+    if rsi and isinstance(rsi, (int, float)) and 40 <= rsi <= 70: explanation.append("RSI saludable")
+
+    return ", ".join(explanation) if explanation else "Métricas neutras o sin datos"
+
 def main():
     print("Initializing Argentina Equity Monitor...")
     monitor = EquityMonitor(symbols)
@@ -54,6 +78,12 @@ def main():
     # Display simplified report in console
     print("\n--- Equity Monitor Report (Top Scored) ---")
     monitor.display_report()
+
+    # Show detail for top stock
+    if not df.empty:
+        top_stock = df.iloc[0]
+        print(f"\n[Análisis Profundo] Top Pick: {top_stock['Symbol']} (Score: {top_stock['Score']})")
+        print(f"Razón: {explain_score(top_stock)}")
 
     # Save detailed report to CSV
     monitor.to_csv("equity_report.csv")
