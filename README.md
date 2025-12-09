@@ -3,6 +3,7 @@
 Este proyecto en Python permite monitorear semanalmente el estado de valuación de las principales acciones argentinas listadas en el exterior, utilizando datos financieros extraídos con `yfinance`.
 ![Título del gráfico](images/monitor.png)
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/lucacamus13/equity-monitor-ARG/blob/main/Equity_Monitor_Enhanced.ipynb)
 
 ## Objetivo
 
@@ -35,20 +36,20 @@ Automatizar un reporte de equity semanal para:
 - `equity_monitor.py`: Módulo principal con la clase `EquityMonitor`.
 - `run_analysis.py`: Script para ejecutar el análisis y generar el reporte.
 - `Equity_Monitor_Enhanced.ipynb`: Notebook mejorado listo para ejecutar en Google Colab.
-- `Equity_valuation_ARG.ipynb`: Notebook original.
 - `/images`: Carpeta donde se guardan las visualizaciones exportadas.
 - `README.md`: Este archivo de documentación.
 
 ## Ejecución en Google Colab
 
-Para ejecutar este proyecto en Google Colab, tienes dos opciones:
+Para ejecutar este proyecto en Google Colab, haz clic en el botón "Open in Colab" de arriba, o sigue estos pasos manualmente:
 
 1.  **Usar el Notebook Mejorado**:
-    -   Sube el archivo `Equity_Monitor_Enhanced.ipynb` a tu Google Drive y ábrelo con Google Colab.
+    -   Abre `Equity_Monitor_Enhanced.ipynb` en GitHub y haz clic en el botón "Open in Colab" (si tienes la extensión) o copia la URL y ábrela en [colab.research.google.com](https://colab.research.google.com/).
     -   Ejecuta las celdas secuencialmente. El notebook instalará las dependencias necesarias y ejecutará el análisis.
 
 2.  **Usar los Scripts Python**:
-    -   Clona este repositorio en Colab:
+    -   Abre un nuevo notebook en Colab.
+    -   Clona este repositorio:
         ```python
         !git clone https://github.com/lucacamus13/equity-monitor-ARG.git
         %cd equity-monitor-ARG
